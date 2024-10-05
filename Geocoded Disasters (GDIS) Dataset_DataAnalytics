@@ -1,0 +1,106 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from statsmodels.tsa.statespace.sarimax import SARIMAX
+from sklearn.metrics import mean_squared_error
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+
+# Make sure 'year' is an integer for all countries
+df['year'] = df['year'].astype(int)
+
+# Create a date column
+df['date'] = pd.to_datetime(df['year'].astype(str) + '-01-01')
+
+# Function to plot disasters by year and type for a specific country
+def plot_disaster_by_country(country_name):
+    df_country = df[df['country'] == country_name]
+    df_country_grouped = df_country.groupby(['year', 'disastertype']).size().reset_index(name='count')
+
+    plt.figure(figsize=(12, 6))
+    sns.lineplot(data=df_country_grouped, x='year', y='count', hue='disastertype', marker='o')
+    plt.title(f'Annual Frequency of Disasters in {country_name} by Type')
+    plt.xlabel('Year')
+    plt.ylabel('Number of Disasters')
+    plt.xticks(rotation=45)
+    plt.legend(title='Disaster Type')
+    plt.suptitle('This graph shows the frequency of different types of disasters over the years in ' + country_name + '.')
+    plt.show()
+
+# Plot for Colombia, Mexico, and the United States
+plot_disaster_by_country('Colombia')
+plot_disaster_by_country('Mexico')
+plot_disaster_by_country('United States')
+
+# Plot for Brazil, Peru, Ecuador, Argentina, Chile, and Uruguay
+countries_to_plot = ['Brazil', 'Peru', 'Ecuador', 'Argentina', 'Chile', 'Uruguay']
+for country in countries_to_plot:
+    plot_disaster_by_country(country)
+
+# Global plot without filtering any country
+df_grouped_all = df.groupby(['year', 'disastertype']).size().reset_index(name='count')
+
+plt.figure(figsize=(12, 6))
+sns.lineplot(data=df_grouped_all, x='year', y='count', hue='disastertype', marker='o')
+plt.title('Annual Frequency of Disasters by Type (All Countries)')
+plt.xlabel('Year')
+plt.ylabel('Number of Disasters')
+plt.xticks(rotation=45)
+plt.legend(title='Disaster Type')
+plt.suptitle('This graph shows how the frequency of different types of disasters has changed over the years across all countries.')
+plt.show()
+
+# SARIMA Forecasting
+def sarima_forecast(disaster_type):
+    df_type = df[df['disastertype'] == disaster_type]
+    df_grouped = df_type.groupby('year').size().reset_index(name='count')
+    
+    model = SARIMAX(df_grouped['count'], order=(1, 1, 1), seasonal_order=(1, 1, 1, 5))
+    model_fit = model.fit(disp=False)
+    
+    # Forecast
+    forecast = model_fit.get_forecast(steps=5)
+    forecast_index = pd.date_range(start=df_grouped['year'].iloc[-1] + 1, periods=5, freq='Y')
+    forecast_values = forecast.predicted_mean
+    
+    plt.figure(figsize=(12, 6))
+    plt.plot(df_grouped['year'], df_grouped['count'], label='Historical Data')
+    plt.plot(forecast_index.year, forecast_values, label='Forecast', color='red')
+    plt.title(f'{disaster_type.capitalize()} Disaster Forecast')
+    plt.xlabel('Year')
+    plt.ylabel('Number of Disasters')
+    plt.legend()
+    plt.suptitle(f'This graph forecasts the number of {disaster_type} disasters over the next 5 years based on historical data.')
+    plt.show()
+
+# Forecast for each disaster type
+disaster_types = df['disastertype'].unique()
+for disaster in disaster_types:
+    sarima_forecast(disaster)
+
+# Linear Regression Validation
+def linear_regression_validation(disaster_type):
+    df_type = df[df['disastertype'] == disaster_type]
+    df_grouped = df_type.groupby('year').size().reset_index(name='count')
+
+    X = df_grouped[['year']]
+    y = df_grouped['count']
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+    model = LinearRegression()
+    model.fit(X_train, y_train)
+    y_pred = model.predict(X_test)
+
+    plt.figure(figsize=(12, 6))
+    plt.scatter(X_test, y_test, color='blue', label='Actual')
+    plt.scatter(X_test, y_pred, color='red', label='Predicted')
+    plt.title(f'Linear Regression Predictions for {disaster_type.capitalize()}')
+    plt.xlabel('Year')
+    plt.ylabel('Number of Disasters')
+    plt.legend()
+    plt.suptitle(f'This graph compares actual {disaster_type} disaster occurrences with predictions made using linear regression.')
+    plt.show()
+
+# Validation for each disaster type
+for disaster in disaster_types:
+    linear_regression_validation(disaster)
