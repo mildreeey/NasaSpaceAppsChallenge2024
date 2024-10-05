@@ -1,0 +1,34 @@
+!pip install firebase-admin pandas
+
+import firebase_admin
+from firebase_admin import credentials, firestore
+import pandas as pd
+
+# Path to the file with your Firebase credentials
+cred = credentials.Certificate('/content/credencialesAgriWatchBot.json')
+
+# Check if the app is already initialized
+if not firebase_admin._apps:
+    # Initialize the Firebase app
+    firebase_admin.initialize_app(cred)
+
+# Connect to Firestore
+firestore_db = firestore.client()
+
+def upload_csv_to_firestore(csv_path, collection_name):
+    # Read the CSV file
+    data = pd.read_csv(csv_path)
+
+    # Upload each row of the DataFrame to the Firestore collection
+    collection = firestore_db.collection(collection_name)
+
+    for index, row in data.iterrows():
+        # Convert the row to a dictionary
+        document = row.to_dict()
+        collection.add(document)
+        print(f"Document added: {document}")
+
+if __name__ == "__main__":
+    csv_path = '/content/pend-gdis-1960-2018-disasterlocations.csv'  # Change the path to your .csv file
+    collection_name = 'geocodedDisasters'  # Change to the name of your Firestore collection
+    upload_csv_to_firestore(csv_path, collection_name)
