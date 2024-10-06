@@ -34,19 +34,31 @@ Geocoded Disasters (GDIS) Dataset
 We are utilizing the Geocoded Disasters (GDIS) dataset, available through NASA's EarthData Search. This dataset provides extensive global records of environmental disasters, including floods, droughts, earthquakes, tsunamis, storms, volcanic activity, and more.
 
 ## The dataset spans from 1960 to 2018 and includes key fields such as:
-
-## Country
 Year of the disaster
 Geolocation (Latitude and Longitude)
 Disaster name
 With a global scope, the GDIS dataset offers valuable insights for understanding the geographical distribution and impact of environmental disasters over time, aiding in climate and disaster research efforts.
 
-
 https://search.earthdata.nasa.gov/search/granules?p=C2022273992-SEDAC&pg[0][v]=f&q=geocoded%20disasters&tl=1727916943!3!!
 
+![image](https://github.com/user-attachments/assets/c648b440-f2ec-4b33-8e41-5e1ca6885510)
 
 ## NCA-LDAS Noah Land Surface Model Dataset
 This dataset is a collection of daily processed data from the Noah Land Surface Model (NCA-LDAS), with a spatial resolution of 0.125 degrees. It is designed to support climate and meteorological research by providing high-resolution data on land surface conditions. The dataset is available through NASA’s EarthData Search and covers the period from 1979 to 2016.
 
 https://search.earthdata.nasa.gov/search/granules?p=C1454297282-GES_DISC&pg[0][v]=f&pg[0][gsk]=-start_date&q=NCA-LDAS%20Noah&tl=1727916943!3!!
+
+![image](https://github.com/user-attachments/assets/369a190f-2fb2-499e-a39b-00296ca9dd19)
+
+## Our FireBase DataBase
+
+Our application uses Firebase Firestore as its database. Firestore allows us to:
+
+Flexible storage: Organize data into documents and collections.
+Real-time synchronization: Automatically update data across all instances of the application.
+Scalability: Handle large volumes of data and users seamlessly.
+This implementation helps us keep our data organized and accessible efficiently.
+
+![image](https://github.com/user-attachments/assets/cef66902-d30f-4ad1-8037-70d98bdd6542)
+
 
