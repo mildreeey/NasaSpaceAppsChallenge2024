@@ -8,7 +8,6 @@ radiación solar y previsiones climáticas, ayudando a los agricultores a tomar 
 1. Análisis de Desastres por País: Se crean gráficos que muestran la frecuencia de desastres por tipo y por país durante los últimos años, utilizando Python, pandas, seaborn y matplotlib.
 2. Predicción con SARIMA: Utilizamos el modelo SARIMA para realizar predicciones sobre la frecuencia de desastres en los próximos cinco años para cada tipo de desastre.
 3. Validación con Regresión Lineal: Implementamos un modelo de regresión lineal para validar los resultados y compararlos con los datos reales.
-4. 
 ## Herramientas y Tecnologías Utilizadas
 - Lenguajes de programación: Python
 - Librerías: pandas, seaborn, matplotlib, statsmodels (SARIMA), scikit-learn (regresión lineal)
