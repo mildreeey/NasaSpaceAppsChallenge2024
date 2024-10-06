@@ -13,3 +13,19 @@ radiación solar y previsiones climáticas, ayudando a los agricultores a tomar 
 - Librerías: pandas, seaborn, matplotlib, statsmodels (SARIMA), scikit-learn (regresión lineal)
 - Análisis, predicción y visualización de datos: Gráficos de líneas para mostrar tendencias en la frecuencia por año de los desastres por país y tipo (Enfocado en latinoamerica).
 
+Conclusiones
+La grafica global muestra como los desastres han evolucionado y esto nos ayuda a discutir algunos casos para el cambio climatico enfocado a la agricultura.
+Podemos observar con este tipo de informacion tambien en que zonas las sequias estan teniendo impacto y ver diferentes variables como algun fenomeno puntual que impacte el lugar (Fenomeno del niño).
+![image](https://github.com/user-attachments/assets/c3cbbfe4-f4c4-47d1-96cb-44022c1bc463)
+
+
+Tendencias: Con esta informacion podemos observar en caso de movimientos teluricos cada cuanto y cada que se tenga algun dato atipico nos podria ayudar a determinar un desastre en el futuro cercano.
+![image](https://github.com/user-attachments/assets/0e3a5f7a-e9f3-4588-b83e-0147062844a9)
+
+Predicciones: Se uso Sarima en esta parte que nos permitio ver como las inundaciones son el tipo de desastre que mas ha ahumentado con el tiempo no solo en colombia si no en otros paises de latinoamerica, teniendo una manera de poder generar algunas mejoras para los cultivos en esta area puntual.
+regresion lineal: Implementando este metodo validamos que los modelos aplicados son eficientes 
+![image](https://github.com/user-attachments/assets/1be08282-d6cb-4322-aec6-30d6ff78ecc9)
+
+
+
+
