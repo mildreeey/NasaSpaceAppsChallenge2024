@@ -1,34 +1,52 @@
-## Análisis y Predicción de la Frecuencia de Desastres
+## Analysis and Prediction of Disaster Frequency
 
-## ¿Qué hace exactamente este proyecto?
-El sistema brindará información en tiempo real sobre variables esenciales para la agricultura, como humedad del suelo, temperatura,
-radiación solar y previsiones climáticas, ayudando a los agricultores a tomar decisiones más informadas y optimizar sus recursos
+## What exactly does this project do?
 
-## ¿Cómo funciona?
-1. Análisis de Desastres por País: Se crean gráficos que muestran la frecuencia de desastres por tipo y por país durante los últimos años, utilizando Python, pandas, seaborn y matplotlib.
-2. Predicción con SARIMA: Utilizamos el modelo SARIMA para realizar predicciones sobre la frecuencia de desastres en los próximos cinco años para cada tipo de desastre.
-3. Validación con Regresión Lineal: Implementamos un modelo de regresión lineal para validar los resultados y compararlos con los datos reales.
-## Herramientas y Tecnologías Utilizadas
-- Lenguajes de programación: Python
-- Librerías: pandas, seaborn, matplotlib, statsmodels (SARIMA), scikit-learn (regresión lineal)
-- Análisis, predicción y visualización de datos: Gráficos de líneas para mostrar tendencias en la frecuencia por año de los desastres por país y tipo (Enfocado en latinoamerica).
+The system will provide real-time information on essential variables for agriculture, such as soil moisture, temperature, solar radiation and weather forecasts, helping farmers make more informed decisions and optimize their resources.
 
-## Conclusiones
-La grafica global muestra como los desastres han evolucionado y esto nos ayuda a discutir algunos casos para el cambio climatico enfocado a la agricultura.
-Se observo como las inundaciones y tormetas son la mayor problematica mundial para la agricultura con una tendencia en ahumento que es momento de mejorar, con estos resultados se puede ver los cambios en fenomenos puntuales como en el del niño. 
+## How does it work?
+1. Disaster Analysis by Country: We create graphs showing the frequency of disasters by type and by country over the past few years using Python, pandas, seaborn, and matplotlib.
+2. Prediction with SARIMA: We use the SARIMA model to make predictions about the frequency of disasters in the next five years for each type of disaster.
+3. Validation with Linear Regression: We implement a linear regression model to validate the results and compare them with the real data.
+   
+## Tools and Technologies Used
+- Programming languages: Python
+- Libraries: pandas, seaborn, matplotlib, statsmodels (SARIMA), scikit-learn (linear regression)
+- Data analysis, prediction and visualization: Line graphs to show trends in the frequency per year of disasters by country and type (Focused on Latin America).
+  
+## Conclusions
+The global graph shows how disasters have evolved and this helps us to discuss some cases for climate change focused on agriculture.
+It was observed how floods and storms are the biggest global problem for agriculture with a tendency to decrease and it is time to improve. With these results we can see the changes in specific phenomena such as El Niño.
 
 ![image](https://github.com/user-attachments/assets/c3cbbfe4-f4c4-47d1-96cb-44022c1bc463)
 
 
-## Tendencias: 
-Con esta informacion podemos observar en caso de movimientos teluricos cada cuanto y cada que se tenga algun dato atipico nos podria ayudar a determinar un desastre en el futuro cercano.
+## Trend: 
+With this information we can observe how often earthquakes occur and every time we have some atypical data it could help us determine a disaster in the near future.
 ![image](https://github.com/user-attachments/assets/0e3a5f7a-e9f3-4588-b83e-0147062844a9)
 
-## Predicciones:
- Se uso Sarima en esta parte que nos permitio ver como las inundaciones son el tipo de desastre que mas ha ahumentado con el tiempo no solo en colombia si no en otros paises de latinoamerica, teniendo una manera de poder generar algunas mejoras para los cultivos en esta area puntual.
-regresion lineal: Implementando este metodo validamos que los modelos aplicados son eficientes 
+## Forecast:
+Sarima was used in this part, which allowed us to see how floods are the type of disaster that has caused the most rainfall over time, not only in Colombia but in other Latin American countries, having a way of being able to generate some improvements for crops in this specific area.
+Linear regression: By implementing this method, we validate that the applied models are efficient.
 ![image](https://github.com/user-attachments/assets/1be08282-d6cb-4322-aec6-30d6ff78ecc9)
 
+Geocoded Disasters (GDIS) Dataset
+We are utilizing the Geocoded Disasters (GDIS) dataset, available through NASA's EarthData Search. This dataset provides extensive global records of environmental disasters, including floods, droughts, earthquakes, tsunamis, storms, volcanic activity, and more.
+
+## The dataset spans from 1960 to 2018 and includes key fields such as:
+
+## Country
+Year of the disaster
+Geolocation (Latitude and Longitude)
+Disaster name
+With a global scope, the GDIS dataset offers valuable insights for understanding the geographical distribution and impact of environmental disasters over time, aiding in climate and disaster research efforts.
 
 
+https://search.earthdata.nasa.gov/search/granules?p=C2022273992-SEDAC&pg[0][v]=f&q=geocoded%20disasters&tl=1727916943!3!!
+
+
+## NCA-LDAS Noah Land Surface Model Dataset
+This dataset is a collection of daily processed data from the Noah Land Surface Model (NCA-LDAS), with a spatial resolution of 0.125 degrees. It is designed to support climate and meteorological research by providing high-resolution data on land surface conditions. The dataset is available through NASA’s EarthData Search and covers the period from 1979 to 2016.
+
+https://search.earthdata.nasa.gov/search/granules?p=C1454297282-GES_DISC&pg[0][v]=f&pg[0][gsk]=-start_date&q=NCA-LDAS%20Noah&tl=1727916943!3!!
 
